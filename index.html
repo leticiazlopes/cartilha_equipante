@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilha do Equipante — AD1</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F4783A;
+    --orange-light: #FFF0E8;
+    --dark: #1A1208;
+    --mid: #3D2B10;
+    --cream: #FAF7F2;
+    --sand: #EDE8DF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    color: white;
+    padding: 70px 40px 60px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 320px; height: 320px;
+    background: var(--orange);
+    border-radius: 50%;
+    top: -100px; right: -80px;
+    opacity: .18;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 180px; height: 180px;
+    background: var(--orange);
+    border-radius: 50%;
+    bottom: -60px; left: -40px;
+    opacity: .12;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(38px, 8vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero p {
+    font-size: 13px;
+    opacity: .5;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+
+  /* ── PASTOR NOTE ── */
+  .pastor-note {
+    background: var(--orange);
+    color: white;
+    padding: 42px 36px;
+    position: relative;
+  }
+  .pastor-note .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .7;
+    margin-bottom: 14px;
+  }
+  .pastor-note blockquote {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    border-left: 3px solid rgba(255,255,255,.4);
+    padding-left: 20px;
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+  .pastor-note .verse {
+    font-size: 13px;
+    background: rgba(0,0,0,.15);
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 8px;
+  }
+  .pastor-note .sign {
+    margin-top: 22px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    opacity: .8;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 52px 36px;
+  }
+  .section + .section {
+    border-top: 1px solid var(--sand);
+  }
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    color: var(--dark);
+  }
+  .section-alt {
+    background: var(--sand);
+  }
+
+  /* ── REQUIREMENT CARDS ── */
+  .req-grid {
+    display: grid;
+    gap: 14px;
+  }
+  .req-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    border: 1px solid #E8E0D4;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .req-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.07);
+  }
+  .req-num {
+    min-width: 38px; height: 38px;
+    background: var(--orange);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .req-body strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: var(--dark);
+  }
+  .req-body p {
+    font-size: 13.5px;
+    color: #5A4A36;
+    line-height: 1.55;
+  }
+
+  /* small pills */
+  .pill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .pill {
+    background: var(--orange);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 100px;
+  }
+
+  /* ── ROUTINE ITEMS ── */
+  .routine-list {
+    display: grid;
+    gap: 10px;
+  }
+  .routine-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    border-radius: 10px;
+    padding: 14px 18px;
+    border: 1px solid #E8E0D4;
+    font-size: 14px;
+    color: var(--mid);
+  }
+  .routine-item .dot {
+    width: 8px; height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── BEFORE CAMP STEPS ── */
+  .steps {
+    display: grid;
+    gap: 10px;
+    counter-reset: steps;
+  }
+  .step {
+    counter-increment: steps;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--mid);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--sand);
+  }
+  .step::before {
+    content: counter(steps, decimal-leading-zero);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--orange);
+    min-width: 44px;
+    opacity: .6;
+  }
+  .step:last-child { border-bottom: none; }
+
+  /* ── MINDSET CARDS ── */
+  .mindset-grid {
+    display: grid;
+    gap: 14px;
+  }
+  .mindset-card {
+    border-radius: 16px;
+    padding: 26px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mindset-card.filled {
+    background: var(--dark);
+    color: white;
+  }
+  .mindset-card.outlined {
+    background: white;
+    border: 1.5px solid #E0D8CC;
+    color: var(--dark);
+  }
+  .mindset-card .mc-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .mindset-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .mindset-card p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    opacity: .8;
+  }
+  .mindset-card .verse-pill {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: var(--orange);
+    color: white;
+  }
+  .mindset-card.outlined .verse-pill {
+    background: var(--orange-light);
+    color: var(--orange);
+  }
+
+  /* ── WORK SECTION ── */
+  .work-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .work-item {
+    background: var(--orange);
+    color: white;
+    border-radius: 12px;
+    padding: 18px 20px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .work-item span {
+    font-size: 20px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,.4);
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    letter-spacing: .08em;
+  }
+  footer strong { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">Adolescentes da Primeira · AD1</div>
+  <h1>Cartilha do<br><span>Equipante</span></h1>
+  <p>Primeira Igreja Batista</p>
+</header>
+
+<!-- PASTOR NOTE -->
+<section class="pastor-note">
+  <div class="label">Palavra do Pastor</div>
+  <blockquote>
+    Você não foi convocado por ninguém — eu creio que o próprio Deus separou esse tempo para você. Serão dias desafiadores, fora da rotina, do conforto. Para isso fomos chamados.
+  </blockquote>
+  <div class="verse">📖 "Assim brilhe a luz de vocês diante dos homens..." — Mt 5.16</div>
+  <div class="sign">Juntos, para a glória de Deus.</div>
+</section>
+
+<!-- REQUISITOS -->
+<section class="section">
+  <div class="section-label">Para participar</div>
+  <div class="section-title">Requisitos do Equipante</div>
+  <div class="req-grid">
+    <div class="req-card">
+      <div class="req-num">1</div>
+      <div class="req-body">
+        <strong>Vida constante com Deus</strong>
+        <p>Perseverança apesar das dificuldades, do pecado, das vitórias e das lutas.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-num">2</div>
+      <div class="req-body">
+        <strong>Santidade expressiva</strong>
+        <p>Completa e visível. Seu testemunho na escola, no cursinho, na igreja e em casa importa.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-num">3</div>
+      <div class="req-body">
+        <strong>Mentalidade de corpo</strong>
+        <p>Sem função mais importante. Pessoas diferentes, equipes diferentes, mesmo objetivo.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-num">4</div>
+      <div class="req-body">
+        <strong>Coração de servo</strong>
+        <p>Seu tempo de acampar acabou. Agora você serve — de todo o coração.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-num">5</div>
+      <div class="req-body">
+        <strong>Busca pela excelência</strong>
+        <p>Quando servimos bem, os acampantes querem voltar e o nome de Deus é glorificado.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-num">6</div>
+      <div class="req-body">
+        <strong>Compromisso real</strong>
+        <p>O compromisso com o acampamento se reflete nos momentos que o antecedem.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pill-grid" style="margin-top:22px;">
+    <div class="pill">✔ 15+ anos</div>
+    <div class="pill">✔ Batizado</div>
+    <div class="pill">✔ Ativo em célula</div>
+    <div class="pill">✔ Presente nos cultos</div>
+    <div class="pill">✔ Atividades concluídas</div>
+  </div>
+</section>
+
+<!-- ROTINA -->
+<section class="section section-alt">
+  <div class="section-label">No acampamento</div>
+  <div class="section-title">Rotina Diária</div>
+  <div class="routine-list">
+    <div class="routine-item"><div class="dot"></div>Respeite os horários de dormir (reunião de madrugada só com autorização)</div>
+    <div class="routine-item"><div class="dot"></div>Participe da salinha de oração</div>
+    <div class="routine-item"><div class="dot"></div>Esteja atento e presente em todas as programações</div>
+    <div class="routine-item"><div class="dot"></div>Avalie os pontos positivos e negativos em equipe</div>
+    <div class="routine-item"><div class="dot"></div>Participe ativamente dos cultos — ore, dance, esteja presente</div>
+    <div class="routine-item"><div class="dot"></div>Esteja presente nos momentos devocionais e nas refeições</div>
+    <div class="routine-item"><div class="dot"></div>Nenhum trabalho durante o culto — qualquer necessidade, fale com a liderança</div>
+  </div>
+</section>
+
+<!-- ANTES DO ACAMPAMENTO -->
+<section class="section">
+  <div class="section-label">Preparação</div>
+  <div class="section-title">O que fazer antes do acampamento</div>
+  <div class="steps">
+    <div class="step">Adquira a camisa AD1</div>
+    <div class="step">Pense na entrada das equipes</div>
+    <div class="step">Participe do culto de entrega</div>
+    <div class="step">Conheça a programação de cor</div>
+    <div class="step">Elabore fantasia para todos os jantares</div>
+    <div class="step">Realize o pagamento da equipe</div>
+    <div class="step">Separe o alimento da Última Ceia</div>
+    <div class="step">Separe as bíblias para as doações</div>
+  </div>
+</section>
+
+<!-- MENTALIDADES -->
+<section class="section section-alt">
+  <div class="section-label">Forma de pensar</div>
+  <div class="section-title">As 5 Mentalidades</div>
+  <div class="mindset-grid">
+
+    <div class="mindset-card filled">
+      <div class="mc-icon">✝️</div>
+      <h3>Mentalidade Cristã</h3>
+      <p>Se Jesus vivesse sua vida por um dia, as pessoas notariam a diferença? Temos a mente de Cristo — e precisamos agir como Ele.</p>
+      <span class="verse-pill">1 Co 2:15–16</span>
+    </div>
+
+    <div class="mindset-card outlined">
+      <div class="mc-icon">🌍</div>
+      <h3>Mentalidade Missionária</h3>
+      <p>Você não vai a um acampamento — vai a um campo. Não a uma equipe — a uma brigada. Não a um evento — a uma missão.</p>
+      <span class="verse-pill">2 Tm 4:2–5</span>
+    </div>
+
+    <div class="mindset-card filled">
+      <div class="mc-icon">⭐</div>
+      <h3>Mentalidade de Excelência</h3>
+      <p>Somos os garçons, decoradores e manutenção desse lugar. Deus é o nosso chefe. Dê o seu melhor, para Ele — em todas as áreas.</p>
+      <span class="verse-pill">2 Co 8:7</span>
+    </div>
+
+    <div class="mindset-card outlined">
+      <div class="mc-icon">🫀</div>
+      <h3>Mentalidade de Corpo</h3>
+      <p>Você não é só mais um equipante — é uma parte convocada. Sem o seu bom funcionamento, o evento sofre. Esteja alinhado.</p>
+      <span class="verse-pill">Rm 15:5–6</span>
+    </div>
+
+    <div class="mindset-card filled">
+      <div class="mc-icon">🙏</div>
+      <h3>Mentalidade de Obediência</h3>
+      <p>Nunca foi sobre fazer sua vontade, mas a de Deus. Obedeça à liderança com inteligência e confiança — eles querem o melhor para o evento.</p>
+      <span class="verse-pill">Hb 13:17</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRABALHO -->
+<section class="section">
+  <div class="section-label">Na prática</div>
+  <div class="section-title">O trabalho do equipante</div>
+  <div class="work-grid">
+    <div class="work-item"><span>🎉</span> Viva as programações</div>
+    <div class="work-item"><span>🤝</span> Acolha os acampantes</div>
+    <div class="work-item"><span>⚡</span> Seja proativo na chegada e saída</div>
+    <div class="work-item"><span>🛏️</span> Zele pela organização do seu quarto</div>
+    <div class="work-item"><span>🏕️</span> Atente às demandas estruturais</div>
+    <div class="work-item"><span>🎯</span> Execute bem sua função na equipe</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Adolescentes da Primeira · AD1</strong><br>
+  Primeira Igreja Batista — Cartilha do Equipante
+</footer>
+
+</body>
+</html>
